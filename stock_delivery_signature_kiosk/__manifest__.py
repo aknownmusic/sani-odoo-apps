@@ -1,11 +1,14 @@
 {
-    "name": "Stock Delivery Signature Kiosk",
+    "name": "Delivery Signature Kiosk",
     "version": "18.0.1.0.0",
     "summary": "Send delivery signatures from desktop to a tablet kiosk",
     "category": "Inventory/Inventory",
     "author": "Maes Tim",
     "maintainer": "Maes Tim",
-    "license": "LGPL-3",
+    "license": "OPL-1",
+    "price": 199.0,
+    "currency": "EUR",
+    "support": "timmaesverkoop@gmail.com",
     "depends": ["stock", "web"],
     "data": [
         "security/ir.model.access.csv",
