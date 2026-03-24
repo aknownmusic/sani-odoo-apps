@@ -1,0 +1,242 @@
+.o_stock_signature_kiosk {
+    min-height: 100vh;
+    padding: 24px;
+    background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.42), transparent 30%),
+        linear-gradient(135deg, #f6efe2 0%, #f5f7fb 50%, #e5eef3 100%);
+    color: #1d2433;
+    font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+.o_stock_signature_kiosk__shell {
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.o_stock_signature_kiosk__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.o_stock_signature_kiosk__eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #bf6a23;
+}
+
+.o_stock_signature_kiosk__title {
+    margin: 6px 0 8px;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1;
+}
+
+.o_stock_signature_kiosk__subtitle {
+    max-width: 760px;
+    margin: 0;
+    font-size: 18px;
+    color: #5a6273;
+}
+
+.o_stock_signature_kiosk__logo_wrap {
+    flex-shrink: 0;
+    max-width: 220px;
+    padding: 18px 22px;
+    border: 1px solid rgba(20, 36, 51, 0.08);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(16px);
+}
+
+.o_stock_signature_kiosk__logo {
+    display: block;
+    width: 100%;
+    max-height: 88px;
+    object-fit: contain;
+}
+
+.o_stock_signature_kiosk__grid {
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(420px, 1.15fr);
+    gap: 24px;
+}
+
+.o_stock_signature_kiosk__panel {
+    padding: 26px;
+    border: 1px solid rgba(20, 36, 51, 0.08);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 20px 50px rgba(46, 63, 87, 0.08);
+    backdrop-filter: blur(16px);
+}
+
+.o_stock_signature_kiosk__panel--centered {
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.o_stock_signature_kiosk__panel--signature .o_web_sign_signature_group {
+    margin-top: 16px !important;
+}
+
+.o_stock_signature_kiosk__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #e9f2ff;
+    color: #21528c;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.o_stock_signature_kiosk__status--success {
+    background: #e5f5eb;
+    color: #1b7b47;
+}
+
+.o_stock_signature_kiosk__status--danger {
+    background: #fdecec;
+    color: #a63333;
+}
+
+.o_stock_signature_kiosk__request_name {
+    margin-bottom: 18px;
+    font-size: clamp(26px, 3vw, 38px);
+}
+
+.o_stock_signature_kiosk__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 0 0 28px;
+}
+
+.o_stock_signature_kiosk__meta dt {
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #7c8494;
+}
+
+.o_stock_signature_kiosk__meta dd {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.o_stock_signature_kiosk__lines {
+    padding: 18px;
+    border-radius: 22px;
+    background: #f7f9fc;
+}
+
+.o_stock_signature_kiosk__lines_title {
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.o_stock_signature_kiosk__line,
+.o_stock_signature_kiosk__line_empty {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(20, 36, 51, 0.08);
+}
+
+.o_stock_signature_kiosk__line:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.o_stock_signature_kiosk__line_name {
+    font-weight: 600;
+}
+
+.o_stock_signature_kiosk__line_qty {
+    color: #5a6273;
+    white-space: nowrap;
+}
+
+.o_stock_signature_kiosk__signature_card {
+    min-height: 420px;
+}
+
+.o_stock_signature_kiosk__signature_card .o_web_sign_name_and_signature {
+    height: 100%;
+}
+
+.o_stock_signature_kiosk__signature_card .o_web_sign_signature_group {
+    border: 1px solid rgba(20, 36, 51, 0.08);
+    border-radius: 22px;
+    background: #fdfefe;
+}
+
+.o_stock_signature_kiosk__signature_card .o_web_sign_signature_container {
+    min-height: 280px;
+}
+
+.o_stock_signature_kiosk__legal {
+    margin: 18px 0 12px;
+    color: #5a6273;
+}
+
+.o_stock_signature_kiosk__error {
+    color: #b03a3a;
+    font-weight: 600;
+}
+
+.o_stock_signature_kiosk__confirm {
+    width: 100%;
+    min-height: 56px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.o_stock_signature_kiosk__spinner {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 18px;
+    border: 5px solid rgba(33, 82, 140, 0.16);
+    border-top-color: #21528c;
+    border-radius: 50%;
+    animation: o-stock-signature-spin 0.9s linear infinite;
+}
+
+@keyframes o-stock-signature-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 991px) {
+    .o_stock_signature_kiosk {
+        padding: 16px;
+    }
+
+    .o_stock_signature_kiosk__header,
+    .o_stock_signature_kiosk__grid {
+        grid-template-columns: 1fr;
+        display: grid;
+    }
+
+    .o_stock_signature_kiosk__logo_wrap {
+        max-width: 180px;
+    }
+}

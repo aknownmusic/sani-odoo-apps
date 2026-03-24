@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_inherit_stock_delivery_signature_kiosk" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.stock.delivery.signature.kiosk</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/widget[@name='signature'][1]" position="before">
+                <button
+                    name="action_request_tablet_signature"
+                    type="object"
+                    string="Sign on Tablet"
+                    class="btn-secondary"
+                    groups="stock.group_stock_sign_delivery"
+                    invisible="not id or picking_type_code != 'outgoing' or state == 'cancel' or is_signed or is_tablet_signature_pending"
+                />
+                <button
+                    name="action_cancel_tablet_signature_request"
+                    type="object"
+                    string="Cancel Tablet Request"
+                    class="btn-secondary"
+                    groups="stock.group_stock_sign_delivery"
+                    invisible="not is_tablet_signature_pending"
+                />
+                <field name="is_tablet_signature_pending" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="tablet_signature_signed_name" readonly="1" invisible="not tablet_signature_signed_name"/>
+                <field name="tablet_signature_signed_at" readonly="1" invisible="not tablet_signature_signed_at"/>
+            </xpath>
+
+            <xpath expr="//page[@name='extra']//group[@name='other_infos']" position="inside">
+                <field name="is_tablet_signature_pending" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
