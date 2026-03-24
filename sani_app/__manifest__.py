@@ -1,7 +1,7 @@
 {
     "name": "Sani App",
     "summary": "Starter scaffold for an Odoo Apps Store module.",
-    "version": "19.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Tools",
     "author": "Sani",
     "maintainer": "Sani",
