@@ -4,7 +4,7 @@ Dedicated repository for Odoo Apps Store modules.
 
 ## Active Module
 
-This branch currently targets Odoo `18.0` and contains:
+This branch currently targets Odoo `19.0` and contains:
 
 - `stock_delivery_signature_kiosk`
 
@@ -23,4 +23,4 @@ This branch currently targets Odoo `18.0` and contains:
 - Replace the placeholder icon and cover image in `stock_delivery_signature_kiosk/static/description/` if you want branded visuals.
 - Review the English product description in `stock_delivery_signature_kiosk/static/description/index.html`.
 - Set your final support contact in the module manifest if needed.
-- Test the module on an Odoo 18 database before submitting.
+- Test the module on an Odoo 19 database before submitting.
