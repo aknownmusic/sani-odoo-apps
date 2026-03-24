@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="public_kiosk_mode" name="Delivery Signature Kiosk">
+        <t t-call="web.layout">
+            <t t-set="html_data" t-value="{'lang': kiosk_backend_info['lang']}"/>
+            <t t-set="head">
+                <title>Delivery Signature Kiosk</title>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                <meta http-equiv="content-type" content="text/html, charset=utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <t t-call-assets="stock_delivery_signature_kiosk.assets_public_kiosk" t-js="false"/>
+                <t t-call-assets="stock_delivery_signature_kiosk.assets_public_kiosk" t-css="false"/>
+                <t t-call="web.conditional_assets_tests">
+                    <t t-set="ignore_missing_deps" t-value="True"/>
+                </t>
+
+                <script type="text/javascript">
+                    odoo.define("stock_delivery_signature_kiosk.public_kiosk_app", ["@stock_delivery_signature_kiosk/public_kiosk/public_kiosk_app"], function (require) {
+                    var { createPublicDeliverySignatureKiosk } = require("@stock_delivery_signature_kiosk/public_kiosk/public_kiosk_app");
+                    createPublicDeliverySignatureKiosk(document, <t t-out="json.dumps(kiosk_backend_info)"/>);
+                    });
+                </script>
+            </t>
+            <t t-set="body"/>
+            <body class="o_web_client"/>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Preparing Signature Kiosk</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(160deg, #f3f6fb 0%, #dde6f2 100%);
+            color: #183247;
+        }
+
+        .kiosk-bootstrap {
+            width: min(92vw, 32rem);
+            padding: 2rem 1.5rem;
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 1rem 2.75rem rgba(24, 50, 71, 0.12);
+            text-align: center;
+        }
+
+        .spinner {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 1rem;
+            border: 0.3rem solid rgba(24, 50, 71, 0.15);
+            border-top-color: #2f6fed;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        h1 {
+            margin: 0 0 0.75rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #51697d;
+        }
+
+        .error {
+            color: #b42318;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="kiosk-bootstrap">
+        <div class="spinner" aria-hidden="true"></div>
+        <h1>Preparing signature kiosk</h1>
+        <p id="status">Connecting to the correct Odoo database...</p>
+    </main>
+
+    <script>
+        (async function () {
+            const params = new URLSearchParams(window.location.search);
+            const db = params.get("db");
+            const target = params.get("target");
+            const statusElement = document.getElementById("status");
+
+            if (!db || !target) {
+                statusElement.textContent = "Missing kiosk parameters.";
+                statusElement.classList.add("error");
+                return;
+            }
+
+            try {
+                await fetch(`/web?db=${encodeURIComponent(db)}`, {
+                    credentials: "same-origin",
+                    redirect: "follow",
+                });
+                window.location.replace(target);
+            } catch (error) {
+                statusElement.textContent = "Could not prepare the kiosk session. Please reload this page.";
+                statusElement.classList.add("error");
+            }
+        })();
+    </script>
+</body>
+</html>

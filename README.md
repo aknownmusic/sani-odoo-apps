@@ -2,17 +2,25 @@
 
 Dedicated repository for Odoo Apps Store modules.
 
+## Active Module
+
+This branch currently targets Odoo `17.0` and contains:
+
+- `stock_delivery_signature_kiosk`
+
+## What The Module Does
+
+`stock_delivery_signature_kiosk` lets warehouse staff send an outgoing delivery to a tablet-friendly kiosk page where the customer can review the transfer lines and sign directly on the device.
+
 ## Structure
 
-- Each published module must live in its own folder at the repository root.
-- The branch name must match the Odoo series exactly, for example `19.0`.
-- The first module scaffold in this repository is `sani_app`.
+- Each published module lives in its own folder at the repository root.
+- The branch name matches the Odoo series exactly, for example `17.0`, `18.0`, or `19.0`.
+- Store assets for a module belong in `static/description/`.
 
 ## Before Uploading To Odoo Apps
 
-- Replace the placeholder support email in `sani_app/__manifest__.py`.
-- Replace the placeholder icon and cover image in `sani_app/static/description/`.
-- Update the English product description in `sani_app/static/description/index.html`.
-- Add your actual module code, views, models, security rules, and tests.
-- Push this repository to GitHub and register the SSH URL on Odoo Apps.
-
+- Replace the placeholder icon and cover image in `stock_delivery_signature_kiosk/static/description/` if you want branded visuals.
+- Review the English product description in `stock_delivery_signature_kiosk/static/description/index.html`.
+- Set your final support contact in the module manifest if needed.
+- Test the module on an Odoo 17 database before submitting.
