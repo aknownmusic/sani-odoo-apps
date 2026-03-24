@@ -1,6 +1,6 @@
 {
     "name": "Delivery Signature Kiosk",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "summary": "Send delivery signatures from desktop to a tablet kiosk",
     "category": "Inventory/Inventory",
     "author": "Maes Tim",
