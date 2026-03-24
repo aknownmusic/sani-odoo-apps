@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="stock_delivery_signature_kiosk.public_kiosk_app">
+        <MainComponentsContainer/>
+        <div class="o_stock_signature_kiosk">
+            <div class="o_stock_signature_kiosk__shell">
+                <div class="o_stock_signature_kiosk__header">
+                    <div>
+                        <div class="o_stock_signature_kiosk__eyebrow">Flash Elektro tablet signing</div>
+                        <h1 class="o_stock_signature_kiosk__title">Levering ondertekenen</h1>
+                        <p class="o_stock_signature_kiosk__subtitle">
+                            Houd deze pagina open op de tablet. Zodra iemand op desktop op
+                            <strong>Ondertekenen op tablet</strong> klikt, verschijnt de levering hier automatisch.
+                        </p>
+                    </div>
+                    <div t-if="state.companyLogo" class="o_stock_signature_kiosk__logo_wrap">
+                        <img t-att-src="state.companyLogo" t-att-alt="props.companyName" class="o_stock_signature_kiosk__logo"/>
+                    </div>
+                </div>
+
+                <t t-if="state.screen === 'loading'">
+                    <section class="o_stock_signature_kiosk__panel o_stock_signature_kiosk__panel--centered">
+                        <div class="o_stock_signature_kiosk__spinner"/>
+                        <h2>Tablet kiosk wordt geladen</h2>
+                    </section>
+                </t>
+
+                <t t-if="state.screen === 'waiting'">
+                    <section class="o_stock_signature_kiosk__panel o_stock_signature_kiosk__panel--centered">
+                        <div class="o_stock_signature_kiosk__status">Klaar voor de volgende levering</div>
+                        <h2>Wachten op een sign-request</h2>
+                        <p>Open op desktop een levering en klik daar op <strong>Ondertekenen op tablet</strong>.</p>
+                    </section>
+                </t>
+
+                <t t-if="state.screen === 'invalid'">
+                    <section class="o_stock_signature_kiosk__panel o_stock_signature_kiosk__panel--centered">
+                        <div class="o_stock_signature_kiosk__status o_stock_signature_kiosk__status--danger">Ongeldige kiosklink</div>
+                        <h2>Deze kiosk-URL klopt niet meer</h2>
+                        <p t-esc="state.errorMessage"/>
+                    </section>
+                </t>
+
+                <t t-if="state.screen === 'success'">
+                    <section class="o_stock_signature_kiosk__panel o_stock_signature_kiosk__panel--centered">
+                        <div class="o_stock_signature_kiosk__status o_stock_signature_kiosk__status--success">Handtekening opgeslagen</div>
+                        <h2>Bedankt</h2>
+                        <p t-esc="state.successMessage"/>
+                    </section>
+                </t>
+
+                <t t-if="state.screen === 'sign' and state.request">
+                    <section class="o_stock_signature_kiosk__grid">
+                        <div class="o_stock_signature_kiosk__panel">
+                            <div class="o_stock_signature_kiosk__status">Actieve levering</div>
+                            <h2 class="o_stock_signature_kiosk__request_name" t-esc="state.request.name"/>
+                            <dl class="o_stock_signature_kiosk__meta">
+                                <div>
+                                    <dt>Klant</dt>
+                                    <dd t-esc="state.request.partner_name or '-'"/>
+                                </div>
+                                <div>
+                                    <dt>Brondocument</dt>
+                                    <dd t-esc="state.request.origin or '-'"/>
+                                </div>
+                                <div>
+                                    <dt>Geplande datum</dt>
+                                    <dd t-esc="state.request.scheduled_date or '-'"/>
+                                </div>
+                            </dl>
+
+                            <div class="o_stock_signature_kiosk__lines">
+                                <div class="o_stock_signature_kiosk__lines_title">Producten</div>
+                                <div t-if="!state.request.lines.length" class="o_stock_signature_kiosk__line_empty">
+                                    Geen productlijnen gevonden.
+                                </div>
+                                <t t-foreach="state.request.lines" t-as="line" t-key="line.id">
+                                    <div class="o_stock_signature_kiosk__line">
+                                        <span class="o_stock_signature_kiosk__line_name" t-esc="line.product_name"/>
+                                        <span class="o_stock_signature_kiosk__line_qty">
+                                            <t t-esc="line.qty"/> <t t-esc="line.uom"/>
+                                        </span>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                        <div class="o_stock_signature_kiosk__panel o_stock_signature_kiosk__panel--signature">
+                            <div class="o_stock_signature_kiosk__status">Handtekening</div>
+                            <div class="o_stock_signature_kiosk__signature_card" t-key="state.request.id">
+                                <NameAndSignature t-props="nameAndSignatureProps"/>
+                            </div>
+                            <p class="o_stock_signature_kiosk__legal">
+                                Door te ondertekenen bevestig je dat deze levering elektronisch mag worden ondertekend.
+                            </p>
+                            <p t-if="state.errorMessage" class="o_stock_signature_kiosk__error" t-esc="state.errorMessage"/>
+                            <button
+                                class="btn btn-primary o_stock_signature_kiosk__confirm"
+                                t-att-disabled="signature.isSignatureEmpty or state.isSubmitting"
+                                t-on-click="confirmSignature"
+                            >
+                                <t t-if="state.isSubmitting">Bezig met opslaan...</t>
+                                <t t-else="">Bevestigen en ondertekenen</t>
+                            </button>
+                        </div>
+                    </section>
+                </t>
+            </div>
+        </div>
+    </t>
+</templates>

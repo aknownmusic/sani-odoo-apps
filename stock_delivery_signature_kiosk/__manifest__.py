@@ -1,0 +1,36 @@
+{
+    "name": "Stock Delivery Signature Kiosk",
+    "version": "18.0.1.0.0",
+    "summary": "Send delivery signatures from desktop to a tablet kiosk",
+    "category": "Inventory/Inventory",
+    "author": "Maes Tim",
+    "maintainer": "Maes Tim",
+    "license": "LGPL-3",
+    "depends": ["stock", "web"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/res_config_settings_views.xml",
+        "views/stock_picking_views.xml",
+        "views/kiosk_templates.xml",
+    ],
+    "images": [
+        "static/description/cover.png",
+    ],
+    "assets": {
+        "stock_delivery_signature_kiosk.assets_public_kiosk": [
+            ("include", "web._assets_helpers"),
+            ("include", "web._assets_primary_variables"),
+            ("include", "web._assets_frontend_helpers"),
+            "web/static/src/scss/pre_variables.scss",
+            "web/static/lib/bootstrap/scss/_variables.scss",
+            "web/static/lib/bootstrap/scss/_variables-dark.scss",
+            "web/static/lib/bootstrap/scss/_maps.scss",
+            ("include", "web._assets_bootstrap_frontend"),
+            ("include", "web._assets_core"),
+            "web/static/src/core/signature/*",
+            "stock_delivery_signature_kiosk/static/src/public_kiosk/*",
+        ],
+    },
+    "installable": True,
+    "application": False,
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_stock_delivery_signature_kiosk" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.stock.delivery.signature.kiosk</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='signature_delivery_orders']" position="after">
+                <setting
+                    id="delivery_signature_kiosk_url"
+                    string="Tablet Signature Kiosk"
+                    invisible="not group_stock_sign_delivery"
+                    help="Open this URL on the tablet browser and keep the page open to receive signature requests from delivery orders."
+                >
+                    <field name="delivery_signature_kiosk_url" widget="CopyClipboardURL" class="w-100"/>
+                    <div class="content-group mt-2">
+                        <button
+                            name="regenerate_delivery_signature_kiosk_key"
+                            type="object"
+                            string="Generate new URL"
+                            class="btn-link"
+                            icon="fa-refresh"
+                        />
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
